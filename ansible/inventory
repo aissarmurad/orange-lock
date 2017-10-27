@@ -1,0 +1,30 @@
+[orange-lock-gate]
+door01 ansible_host=192.168.99.18 ansible_user=root ansible_become=true 
+ansible_become_pass=orangepi
+
+[orange-lock-front-door]
+door02 ansible_host=192.168.99.19 ansible_user=root ansible_become=true 
+ansible_become_pass=orangepi
+
+[orange-lock-side-door]
+door03 ansible_host=192.168.99.20 ansible_user=root ansible_become=true 
+ansible_become_pass=orangepi
+
+[orange-lock-back-door]
+door04 ansible_host=192.168.99.21 ansible_user=root ansible_become=true 
+ansible_become_pass=orangepi
+
+
+[orange-lock-all:children]
+orange-lock-gate
+orange-lock-front-door
+orange-lock-side-door
+orange-lock-back-door
+
+[orange-lock-external:children]
+orange-lock-gate
+
+[orange-lock-internal:children]
+orange-lock-front-door
+orange-lock-side-door
+orange-lock-back-door

@@ -1,0 +1,21 @@
+---
+- name: Provisioning a New Orange Lock
+  ###
+  #
+  # How to use the playbook
+  # Edit inventory file and add a new orange lock
+  # Apply the configuration in new orange lock
+  # ansible-playbook -i inventory instantiate.yml --extra-vars "target=lock01"
+  # or
+  # Apply the configurations in all orange locks
+  # ansible-playbook -i inventory instantiate.yml
+  #
+  ###
+
+  # hosts: 192.168.99.18
+  hosts: '{{ target }}'
+  # remote_user: root
+
+  roles:
+    - dependencies
+    #- project

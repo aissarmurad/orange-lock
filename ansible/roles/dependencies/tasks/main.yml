@@ -1,0 +1,48 @@
+---
+- name: Install "git" package
+  apt:
+    name: git
+    update_cache: yes
+    cache_valid_time: 86400
+    state: present
+
+- name: Install "python"
+  apt:
+    name: python
+    update_cache: yes
+    cache_valid_time: 86400
+    state: present
+
+- name: Install "python-dev"
+  apt:
+    name: python-dev
+    update_cache: yes
+    cache_valid_time: 86400
+    state: present
+
+- name: Install "OPi.GPIO" python package
+  pip:
+    name: OPi.GPIO
+    version: 0.2.5
+    state: present
+
+- name: Install SPY-Py dependence from git repo
+  git:
+    repo: "{{ spi_py_repo }}"
+    dest: "{{ home_of_repositories }}/{{ spi_py_directory }}"
+    version: master
+    accept_hostkey: yes
+  register: clone_spi_py_repository
+
+- name: Install "SPI-Py" python package
+  shell: python setup.py install
+  args:
+    chdir: "{{ home_of_repositories }}/{{ spi_py_directory }}"
+
+- name: Install MFRC522 dependence from git repo
+  git:
+    repo: "{{ mfrc522_repo }}"
+    dest: "{{ home_of_repositories }}/{{ mfrc522_directory }}"
+    version: master
+    accept_hostkey: yes
+  register: clone_mfrc522_repository

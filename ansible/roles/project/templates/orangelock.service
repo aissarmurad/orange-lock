@@ -1,0 +1,22 @@
+###
+#
+# Service to start script
+#
+# /usr/lib/systemd/system/orangelock.service
+#
+###
+
+[Unit]
+Description=Quero-Lock Service
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root
+ExecStart=/opt/test03/MFRC522-python/Read.py
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+

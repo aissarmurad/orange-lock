@@ -1,0 +1,7 @@
+home_of_repositories: /opt/repositories/
+spi_py_repo: git@github.com:aissarmurad/SPI-Py.git
+spi_py_directory: SPI-Py
+
+mfrc522_repo: git@github.com:aissarmurad/MFRC522-python.git
+mfrc522_directory: MFRC522-python
+
